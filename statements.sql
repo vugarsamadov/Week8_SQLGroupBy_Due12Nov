@@ -81,7 +81,9 @@ SELECT SUM(P.SellPrice) AS TotalSaleAmount FROM Product_Sales PS left join Produ
 
 -- 3
 
-SELECT SUM(P.SellPrice) AS TotalSellPrice, MONTH(GETDATE()) AS Month
+
+SELECT SUM(P.SellPrice-P.BuyPrice) AS TotalSellPrice, MONTH(GETDATE()) AS Month
 FROM Product_Sales PS left join Products P on P.Id = PS.ProductId
 WHERE MONTH(PS.SaleDate) = MONTH(GETDATE())
+
 
